@@ -1,6 +1,6 @@
 ---
 name: Module-Metadata-Changes
-version: 1.00
+version: 1.01
 author:
   - 'Ron Savage <ron@savage.net.au>'
 abstract: Manage a module's CHANGES file
@@ -9,6 +9,7 @@ resources:
   license: http://opensource.org/licenses/artistic-license.php
 requires:
   Carp: 0
+  Config::IniFiles: 0
   DateTime::Format::HTTP: 0
   DateTime::Format::Strptime: 0
   DateTime::Format::W3CDTF: 0
@@ -23,7 +24,7 @@ build_requires:
 provides:
   Module::Metadata::Changes:
     file: lib/Module/Metadata/Changes.pm
-    version: 1.00
+    version: 1.01
 generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

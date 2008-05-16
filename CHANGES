@@ -1,4 +1,7 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+1.01  Fri May 16 09:12:00 2008
+	  - Add Config::IniFiles to Build.PL and Makefile.PL
+
 1.00  Fri May 02 15:15:45 2008
-	- Original version
+	  - Original version
