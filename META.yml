@@ -1,6 +1,6 @@
 ---
 name: Module-Metadata-Changes
-version: 1.01
+version: 1.02
 author:
   - 'Ron Savage <ron@savage.net.au>'
 abstract: Manage a module's CHANGES file
@@ -10,6 +10,7 @@ resources:
 requires:
   Carp: 0
   Config::IniFiles: 0
+  DateTime: 0.42
   DateTime::Format::HTTP: 0
   DateTime::Format::Strptime: 0
   DateTime::Format::W3CDTF: 0
@@ -24,8 +25,8 @@ build_requires:
 provides:
   Module::Metadata::Changes:
     file: lib/Module/Metadata/Changes.pm
-    version: 1.01
-generated_by: Module::Build version 0.2808
+    version: 1.02
+generated_by: Module::Build version 0.280801
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2
