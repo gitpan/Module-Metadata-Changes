@@ -8,12 +8,12 @@ htdocs/assets/templates/module/metadata/changes/ini.table.tmpl
 lib/Module/Metadata/Changes.pm
 Makefile.PL
 MANIFEST			This list of files
+META.yml
 README
 t/00.pod.t
 t/01.load.t
 t/02.convert.t
 t/Changelog.ini
-t/Changes
 t/CHANGES
 t/CHANGES.yml
-META.yml
+t/Non.standard.name

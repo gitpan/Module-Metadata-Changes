@@ -1,12 +1,22 @@
 ---
-name: Module-Metadata-Changes
-version: 1.04
+abstract: "Manage a module's CHANGES file"
 author:
   - 'Ron Savage <ron@savage.net.au>'
-abstract: Manage a module's CHANGES file
+build_requires:
+  Test::More: 0
+  Test::Pod: 0
+configure_requires:
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3607'
 license: artistic
-resources:
-  license: http://opensource.org/licenses/artistic-license.php
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Module-Metadata-Changes
+provides:
+  Module::Metadata::Changes:
+    file: lib/Module/Metadata/Changes.pm
+    version: 1.08
 requires:
   Carp: 0
   Config::IniFiles: 0
@@ -19,14 +29,6 @@ requires:
   Test::More: 0
   Test::Pod: 0
   version: 0
-build_requires:
-  Test::More: 0
-  Test::Pod: 0
-provides:
-  Module::Metadata::Changes:
-    file: lib/Module/Metadata/Changes.pm
-    version: 1.04
-generated_by: Module::Build version 0.280801
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
+resources:
+  license: http://www.perlfoundation.org/artistic_license_1_0
+version: 1.08
