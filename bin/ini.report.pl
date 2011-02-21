@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #
 # Name:
 #	ini.report.pl.
@@ -36,7 +36,7 @@ if ($option_parser -> getoptions
 {
 	pod2usage(1) if ($option{'help'});
 
-	exit Module::Metadata::Changes -> new(\%option) -> run();
+	exit Module::Metadata::Changes -> new(%option) -> run();
 }
 else
 {

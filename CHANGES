@@ -1,5 +1,23 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+2.00  Tue Feb 15 14:59:00 2011
+	- Rewrite to allow client access to the memory-based version of Changelog.ini.
+	- Add scripts/report.names.pl to demonstrate this feature.
+	- new() now takes a hash, not a hashref, since I've adopted the fabulous Hash::FieldHash.
+	- Replace eval{} with Try::Tiny.
+	- Only remove commas from lines which match /^\d/, since the digit(s) are assumed to be a version #,
+	  and hence the commas are assumed to be embedded in dates.
+	- Discontinue convert() and convert_body(), which were available in V 1.
+	- What used to be convert() is now writer(reader() ).
+	- What used to be convert_body() is now transform().
+	- The default input file (under -c) is CHANGES, not ./CHANGES.
+	- The default input file (without -c) is Changelog.ini, not ./Changelog.ini.
+	- Add warnings to docs that config(), get_latest_release() and get_latest_version() must be called after read().
+	- Replace /usr/bin/perl with /usr/bin/env perl.
+	- Replace common::sense with use strict and use warnings, to get uninit var warnings.
+	- Replace Carp::croak with die.
+	- Use real version numbers instead of 0 in the required modules lists in Build.PL and Makefile.PL.
+
 1.08  Sun Feb 21 12:56:13 2010
 	- Remove text 'All rights reserved' (for Debian licensing).
 	- Remove POD heads 'Required Modules' and 'Changes'.
