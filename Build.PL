@@ -4,12 +4,16 @@ Module::Build -> new
 (
  module_name    => 'Module::Metadata::Changes',
  license        => 'artistic',
- dist_abstract  => "Manage a module's CHANGES file",
+ dist_abstract  => "Manage a module's machine-readable CHANGES file",
  dist_author    => 'Ron Savage <ron@savage.net.au>',
  build_requires =>
  {
 	 Test::More => 0.96,
 	 Test::Pod  => 1.41,
+ },
+ configure_requires =>
+ {
+ 	 Module::Build => 0.3800,
  },
  requires =>
  {

@@ -32,7 +32,7 @@ fieldhash my %urlForCSS   => 'urlForCSS';
 fieldhash my %verbose     => 'verbose';
 fieldhash my %webpage     => 'webPage';
 
-our $VERSION = '2.03';
+our $VERSION = '2.04';
 
 # ------------------------------------------------
 
@@ -249,20 +249,24 @@ sub reader
 	$line            =~ s/\s*\.\s*$//;
 	my(@field)       = split(/\s+/, $line);
 	my($module_name) = $field[$#field];
+	my($ok)          = $module_name ? 1 : 0;
 
 	# 2nd guess at format: X::Y somewhere in the first line. This overrides the first guess.
 
-	@field = split(/\s+/, $line);
-
-	my($field);
-
-	for $field (@field)
+	if (! $ok)
 	{
-		if ($field =~ /^.+::.+$/)
-		{
-			$module_name = $field;
+		@field = split(/\s+/, $line);
 
-			last;
+		my($field);
+
+		for $field (@field)
+		{
+			if ($field =~ /^.+::.+$/)
+			{
+				$module_name = $field;
+
+				last;
+			}
 		}
 	}
 
@@ -404,6 +408,7 @@ sub run
 sub transform
 {
 	my($self, @line) = @_;
+	my($count)       = 0;
 
 	my($current_version, $current_date, @comment);
 	my($date);
@@ -414,6 +419,8 @@ sub transform
 
 	for $line (@line)
 	{
+		$count++;
+
 		$line  =~ s/^\s+//;
 		$line  =~ s/\s+$//;
 
@@ -441,15 +448,15 @@ sub transform
 			$version = version -> new("$field[0]");
 		};
 
-		$date = $self -> parse_datetime($field[1]);
+		$date = defined $field[1] ? $self -> parse_datetime($field[1]) : 'No input string';
 
 		if ( ($version eq '0') || ($date eq 'Could not parse date') || ($date =~ /No input string/) )
 		{
 			# We got an error. So assume it's commentary on the current release.
-			# If the line starts with EOT, jam a '-' in front of it to eascape it,
+			# If the line starts with EOT, jam a '-' in front of it to escape it,
 			# since Config::IniFiles uses EOT to terminate multi-line comments.
 
-			$line = ".$line" if (substr($line, 0, 3) eq 'EOT');
+			$line = "-$line" if (substr($line, 0, 3) eq 'EOT');
 
 			push @comment, $line;
 		}
@@ -572,7 +579,7 @@ sub validate
 		# Validate Date within each Release.
 
 		$candidate = $self -> config -> val($release, 'Date');
-		
+
 		try
 		{
 			$date = $parser -> parse_datetime($candidate);
@@ -642,7 +649,7 @@ sub writer
 
 =head1 NAME
 
-L<Module::Metadata::Changes> - Manage a machine-readable Changelog.ini file, with optional conversion from CHANGES style
+Module::Metadata::Changes - Manage a module's machine-readable CHANGES file
 
 =head1 Synopsis
 
@@ -926,7 +933,7 @@ Return value: 0.
 
 =head2 o transform(@line)
 
-Transform the memory-based version of CHANGES into an arrayref of hashrefs, where each array element 
+Transform the memory-based version of CHANGES into an arrayref of hashrefs, where each array element
 holds data for 1 version.
 
 Must be called by C<reader()>.
