@@ -8,7 +8,7 @@ WriteMakefile
  ($] ge '5.005') ?
  (
   AUTHOR   => 'Ron Savage (ron@savage.net.au)',
-  ABSTRACT => "Manage a module's machine-readable CHANGES file",
+  ABSTRACT => "Manage a module's machine-readable Changes/CHANGES file",
  ) : (),
  clean =>
  {
@@ -21,6 +21,7 @@ WriteMakefile
 },
  DISTNAME  => 'Module-Metadata-Changes',
  NAME      => 'Module::Metadata::Changes',
+	LICENSE   => 'artistic_2',
  PL_FILES  => {},
  PREREQ_PM =>
  {
@@ -33,8 +34,8 @@ WriteMakefile
 	 HTML::Entities::Interpolate => 1.03,
 	 HTML::Template              => 2.9,
 	 Perl6::Slurp                => 0.03,
-	 Test::More                  => 0.96,
-	 Test::Pod                   => 1.41,
+	 Test::More                => 0.96,
+#	 Test::Pod                   => 1.45, # Make it optional. See t/pod.t
 	 version                     => 0.82,
  },
  VERSION_FROM => 'lib/Module/Metadata/Changes.pm',

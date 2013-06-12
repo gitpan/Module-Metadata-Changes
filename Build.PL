@@ -3,13 +3,13 @@ use Module::Build;
 Module::Build -> new
 (
  module_name    => 'Module::Metadata::Changes',
- license        => 'artistic',
- dist_abstract  => "Manage a module's machine-readable CHANGES file",
+ license        => 'artistic_2',
+ dist_abstract  => "Manage a module's machine-readable Changes/CHANGES file",
  dist_author    => 'Ron Savage <ron@savage.net.au>',
  build_requires =>
  {
-	 Test::More => 0.96,
-	 Test::Pod  => 1.41,
+	 Test::More=> 0.96,
+#	 Test::Pod  => 1.45, # Make it optional. See t/pod.t
  },
  configure_requires =>
  {
